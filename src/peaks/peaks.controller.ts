@@ -1,4 +1,4 @@
-import { Controller, Get, Body, Query, ValidationPipe, Param, UsePipes, ParseIntPipe } from '@nestjs/common';
+import { Controller, Get, Post, Body, Query, ValidationPipe, Param, UsePipes, ParseIntPipe } from '@nestjs/common';
 import { CreatePeakDto } from './dto/create-peak.dto';
 import { PeaksService } from './peaks.service';
 import { Peak } from './peak.entity';

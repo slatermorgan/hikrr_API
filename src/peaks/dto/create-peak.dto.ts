@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsOptional } from "class-validator";
+import { IsNotEmpty, IsOptional} from "class-validator";
 
 export class CreatePeakDto {
     @IsNotEmpty()
@@ -7,46 +7,66 @@ export class CreatePeakDto {
     @IsOptional()
     region: string;
 
+    @IsOptional()
     parent: string;
 
+    @IsOptional()
     classification: string;
 
-    metres: string;
+    @IsNotEmpty()
+    metres: number;
 
-    feet: string;
+    @IsNotEmpty()
+    feet: number;
 
+    @IsOptional()
     gridref: string;
 
+    @IsOptional()
     gridref10: string;
 
+    @IsOptional()
     colgridref: string;
 
-    colheight: string;
+    @IsOptional()
+    colheight: number;
 
-    drop: string;
+    @IsOptional()
+    drop: number;
 
+    @IsOptional()
     feature: string;
 
+    @IsOptional()
     observations: string;
 
+    @IsOptional()
     survey: string;
 
+    @IsOptional()
     revision: string;
 
+    @IsOptional()
     comments: string;
 
+    @IsOptional()
     map50: string;
 
+    @IsOptional()
     map25: string;
 
-    xcoord: string;
+    @IsOptional()
+    xcoord: number;
 
-    ycoord: string;
+    @IsOptional()
+    ycoord: number;
 
-    latitude: string;
+    @IsOptional()
+    latitude: number;
 
-    longitude: string;
+    @IsOptional()
+    longitude: number;
 
+    @IsOptional()
     country: string;
-
 }
