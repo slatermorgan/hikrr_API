@@ -2,6 +2,7 @@ import { Peak } from "./peak.entity";
 import { EntityRepository, Repository } from "typeorm";
 import { GetPeaksFilterDto } from "./dto/get-peaks-filter.dto";
 import { CreatePeakDto } from "./dto/create-peak.dto";
+import { HttpException, HttpStatus } from "@nestjs/common";
 
 @EntityRepository(Peak)
 export class PeakRepository extends Repository<Peak> {
@@ -18,8 +19,19 @@ export class PeakRepository extends Repository<Peak> {
             );
         }
 
-        const peaks = await query.getMany();
-        return peaks;
+        try {
+            const peaks = await query.getMany();
+            return peaks;
+
+        } catch (e) {
+            throw new HttpException(
+                {
+                    status: HttpStatus.INTERNAL_SERVER_ERROR,
+                    error: 'Failed to get peaks',
+                },
+                HttpStatus.INTERNAL_SERVER_ERROR
+            );
+        }
     }
 
     async createPeak(createPeakDto: CreatePeakDto): Promise<Peak> {
@@ -50,8 +62,18 @@ export class PeakRepository extends Repository<Peak> {
         peak.longitude = createPeakDto.longitude;
         peak.country = createPeakDto.country;
 
-        await peak.save();
+        try {
+            await peak.save();
+            return peak;
 
-        return peak;
+        } catch (e) {
+            throw new HttpException(
+                {
+                    status: HttpStatus.INTERNAL_SERVER_ERROR,
+                    error: 'Failed to save peak',
+                },
+                HttpStatus.INTERNAL_SERVER_ERROR
+            );
+        }
     }
 }
