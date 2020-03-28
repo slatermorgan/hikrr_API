@@ -8,13 +8,13 @@ export class Peak extends BaseEntity {
     @Column()
     name: string;
 
-    @Column()
+    @Column({nullable: true})
     region: string;
 
-    @Column()
+    @Column({nullable: true})
     parent: string;
 
-    @Column()
+    @Column({nullable: true})
     classification: string;
 
     @Column()
@@ -23,54 +23,54 @@ export class Peak extends BaseEntity {
     @Column()
     feet: number;
 
-    @Column()
+    @Column({nullable: true})
     gridref: string;
 
-    @Column()
+    @Column({nullable: true})
     gridref10: string;
 
-    @Column()
+    @Column({nullable: true})
     colgridref: string;
 
-    @Column()
+    @Column({nullable: true})
     colheight: number;
 
-    @Column()
+    @Column({nullable: true})
     drop: number;
 
-    @Column()
+    @Column({nullable: true})
     feature: string;
 
-    @Column()
+    @Column({nullable: true})
     observations: string;
 
-    @Column()
+    @Column({nullable: true})
     survey: string;
 
-    @Column()
+    @Column({nullable: true})
     revision: string;
 
-    @Column()
+    @Column({nullable: true})
     comments: string;
 
-    @Column()
+    @Column({nullable: true})
     map50: string;
 
-    @Column()
+    @Column({nullable: true})
     map25: string;
 
-    @Column()
+    @Column({nullable: true})
     xcoord: number;
 
-    @Column()
+    @Column({nullable: true})
     ycoord: number;
 
-    @Column()
+    @Column({nullable: true})
     latitude: number;
 
-    @Column()
+    @Column({nullable: true})
     longitude: number;
 
-    @Column()
+    @Column({nullable: true})
     country: string;
 }
