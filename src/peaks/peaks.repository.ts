@@ -11,8 +11,8 @@ export class PeakRepository extends Repository<Peak> {
 
         if (search) {
             query.andWhere(
-                '(peak.name LIKE :search OR' +
-                'peak.comments LIKE :search' +
+                '(peak.name LIKE :search OR ' +
+                'peak.comments LIKE :search OR ' +
                 'peak.parent LIKE :search)',
                 {search: `%${search}%`}
             );
