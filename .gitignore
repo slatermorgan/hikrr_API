@@ -35,3 +35,4 @@ lerna-debug.log*
 .eslintrc.js
 data.csv
 src/config/typeorm.config.ts
+src/auth/dto/jwt.strategy.ts
