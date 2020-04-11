@@ -6,7 +6,7 @@ import { Peak } from './peak.entity';
 import { GetPeaksFilterDto } from './dto/get-peaks-filter.dto';
 
 @Controller('peaks')
-@UseGuards(AuthGuard())
+// @UseGuards(AuthGuard())
 export class PeaksController {
     constructor(private peaksService: PeaksService) {}
 
