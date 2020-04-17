@@ -1,0 +1,27 @@
+COPY peak(
+    id,
+    name,
+    region,
+    parent,
+    classification,
+    metres,
+    feet,
+    gridref,
+    gridref10,
+    colgridref,
+    colheight,
+    drop,
+    feature,
+    observations,
+    survey,
+    revision,
+    comments,
+    map50,
+    map25,
+    xcoord,
+    ycoord,
+    latitude,
+    longitude,
+    country
+)
+FROM 'C:\Users\Slater\Downloads\peak.csv' DELIMITER ',' CSV HEADER;
