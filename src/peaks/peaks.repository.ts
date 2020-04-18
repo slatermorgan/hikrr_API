@@ -17,6 +17,7 @@ export class PeakRepository extends Repository<Peak> {
         // pagination
         queryBuilder.take(take)
         queryBuilder.skip(skip);
+        queryBuilder.orderBy('peak.metres', 'DESC');
 
         if (search) {
             queryBuilder.andWhere(
