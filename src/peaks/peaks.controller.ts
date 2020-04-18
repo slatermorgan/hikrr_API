@@ -19,7 +19,7 @@ export class PeaksController {
             skip
         } = filterDto;
 
-        take = take || 50;
+        take = take || 10;
         skip = skip || 0;
 
         return this.peaksService.getPeaks(
