@@ -36,3 +36,4 @@ lerna-debug.log*
 data.csv
 src/config/typeorm.config.ts
 src/auth/dto/jwt.strategy.ts
+package-lock.json

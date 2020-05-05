@@ -1,0 +1,30 @@
+CREATE TABLE peak
+(
+    id integer NOT NULL,
+    name character varying(100),
+    region character varying(50),
+    parent character varying(50),
+    classification character varying(50),
+    metres float,
+    feet float,
+    gridref character varying(50),
+    gridref10 character varying(50),
+    colgridref character varying(50),
+    colheight character varying(50),
+    drop float,
+    feature character varying(250),
+    observations character varying(1000),
+    survey character varying(250),
+    revision character varying(50),
+    comments character varying(1000),
+    map50  character varying(50),
+    map25  character varying(50),
+    xcoord float,
+    ycoord float,
+    latitude float,
+    longitude float,
+    country character varying(250)
+)
+
+// Note: Make sure to set id to primary key in the GUI
+// need to find a way to do that properly

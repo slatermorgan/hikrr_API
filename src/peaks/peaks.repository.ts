@@ -3,15 +3,24 @@ import { EntityRepository, Repository } from "typeorm";
 import { GetPeaksFilterDto } from "./dto/get-peaks-filter.dto";
 import { CreatePeakDto } from "./dto/create-peak.dto";
 import { HttpException, HttpStatus } from "@nestjs/common";
+import {paginate, Pagination, IPaginationOptions} from 'nestjs-typeorm-paginate';
 
 @EntityRepository(Peak)
 export class PeakRepository extends Repository<Peak> {
-    async getPeaks(filterDto: GetPeaksFilterDto): Promise<Peak[]> {
-        const { search } = filterDto;
-        const query = this.createQueryBuilder('peak');
+    async getPeaks(
+        search: string,
+        take: number,
+        skip: number
+    ): Promise<Peak[]> {
+        const queryBuilder = this.createQueryBuilder('peak');
+
+        // pagination
+        queryBuilder.take(take)
+        queryBuilder.skip(skip);
+        queryBuilder.orderBy('peak.metres', 'DESC');
 
         if (search) {
-            query.andWhere(
+            queryBuilder.andWhere(
                 '(peak.name LIKE :search OR ' +
                 'peak.comments LIKE :search OR ' +
                 'peak.parent LIKE :search)',
@@ -20,7 +29,7 @@ export class PeakRepository extends Repository<Peak> {
         }
 
         try {
-            const peaks = await query.getMany();
+            const peaks = await queryBuilder.getMany();
             return peaks;
 
         } catch (e) {

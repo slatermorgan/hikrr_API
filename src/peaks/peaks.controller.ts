@@ -4,15 +4,29 @@ import { CreatePeakDto } from './dto/create-peak.dto';
 import { PeaksService } from './peaks.service';
 import { Peak } from './peak.entity';
 import { GetPeaksFilterDto } from './dto/get-peaks-filter.dto';
+import {Pagination} from 'nestjs-typeorm-paginate';
 
 @Controller('peaks')
-@UseGuards(AuthGuard())
+// @UseGuards(AuthGuard())
 export class PeaksController {
     constructor(private peaksService: PeaksService) {}
 
     @Get()
     getPeaks(@Query(ValidationPipe) filterDto: GetPeaksFilterDto): Promise<Peak[]> {
-        return this.peaksService.getPeaks(filterDto);
+        let {
+            search,
+            take,
+            skip
+        } = filterDto;
+
+        take = take || 50;
+        skip = skip || 0;
+
+        return this.peaksService.getPeaks(
+            search,
+            take,
+            skip
+        );
     }
 
     @Get('/:id')

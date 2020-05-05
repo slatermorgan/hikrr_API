@@ -4,6 +4,7 @@ import { PeakRepository } from './peaks.repository';
 import { GetPeaksFilterDto } from './dto/get-peaks-filter.dto';
 import { Peak } from './peak.entity';
 import { CreatePeakDto } from './dto/create-peak.dto';
+import {paginate, Pagination, IPaginationOptions} from 'nestjs-typeorm-paginate';
 
 @Injectable()
 export class PeaksService {
@@ -12,8 +13,16 @@ export class PeaksService {
         private peakRepository: PeakRepository
     ) {}
 
-    getPeaks(filterDto: GetPeaksFilterDto): Promise<Peak[]> {
-        return this.peakRepository.getPeaks(filterDto);
+    getPeaks(
+        search: string,
+        take: number,
+        skip: number
+    ): Promise<Peak[]> {
+        return this.peakRepository.getPeaks(
+            search,
+            take,
+            skip
+        );
     }
 
     async getPeakById(id: number): Promise<Peak> {
